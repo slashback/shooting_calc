@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .inputs {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: darkgray;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" height="600" width="600">
+    </canvas>
+    <div class="inputs">
+        <span>Расстояние, м</span>
+        <br />
+        <input type="text" value="50" id="distance" oninput="onDistanceChange()">
+        <br />
+        <span>Цена клика, МОА</span>
+        <br />
+        <input type="text" value="0.5" id="moaClickValue">
+        <br />
+        <span>Кликов вверх: </span> <span id="clickUp"></span>
+        <br />
+        <span>Кликов вниз: </span> <span id="clickDown"></span>
+        <br />
+        <span>Кликов вправо: </span> <span id="clickRight"></span>
+        <br />
+        <span>Кликов влево: </span> <span id="clickLeft"></span>
+        <br />
+        <button onclick="removeShoots()">Удалить точки</button>
+        <br />
+        <button onclick="removeLastShoot()">Удалить последнюю</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
