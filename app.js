@@ -12,6 +12,7 @@ var circlesColor = 'black';
 var linesColor = 'black';
 var numbersColor = 'black';
 var shoots = [];
+var circleRadius = 24;
 
 function getContext() {
     const canvas = document.querySelector('#canvas');
@@ -25,7 +26,6 @@ function draw_number(x, y, number, ctx) {
     ctx.font = '18px sans serif';
     ctx.rect(x, y, 30, ctx.height);
     ctx.fillStyle = numbersColor;
-    ctx.clip();
     ctx.fillText(number, x, y);
     ctx.stroke()
 }
@@ -169,13 +169,13 @@ function drawMesh(ctx) {
     const dist = Math.round(moaInCurrentDist * PixelsInSm)
     // const distance = getDistance()
     // const moaInCurrentDist = (moaIn100m / 100) * distance;
-    for (i = 0; i< ctx.canvas.height; i+= dist) {
+    for (i = 6; i< ctx.canvas.height; i+= dist) {
         ctx.moveTo(0,i); // 200 - высота
-        ctx.lineTo(600, i);
+        ctx.lineTo(400, i);
     }
-    for (i = 0; i< ctx.canvas.width; i+= dist) {
+    for (i = 6; i< ctx.canvas.width; i+= dist) {
         ctx.moveTo(i,0); // 200 - высота
-        ctx.lineTo(i, 600);
+        ctx.lineTo(i, 400);
     }
 
     ctx.stroke();
@@ -251,18 +251,17 @@ function drawNumbers(ctx) {
     const centerX = getCenterX(ctx);
     const centerY = getCenterY(ctx);
 
-    var pos_number_start_y = 44;
-    var pos_number_diff_y = 25;
+    var pos_number_start_y = -60;
+    var pos_number_diff_y = circleRadius;
     var pos_number_x = centerX + 2;
-    const radius = 25;
-    for (i = 1; i <= 10; i++) {
+    const radius = circleRadius;
+    for (i = 1; i <= 9; i++) {
         drawCircle(ctx, centerX, centerY, radius * i, null, circlesColor, 2);
     }
 
     for (i = 1; i <= 9; i++) {
         draw_number(pos_number_x, pos_number_start_y + pos_number_diff_y * i, i, ctx);
     }
-    draw_number(pos_number_x-2, centerY-3, 10, ctx)
 }
 
 function drawLines(ctx) {
